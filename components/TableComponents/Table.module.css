@@ -1,0 +1,46 @@
+.heading {
+    display: flex;
+}
+
+.heading button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.column_heading {
+    flex: 1;
+    padding: 20px;
+    color: var(--text-color-secondary);
+    font-weight: 500;
+}
+
+.row {
+    display: flex;
+    padding: 20px;
+
+    text-align: center;
+
+    background-color: var(--background-color-light);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: var(--box-shadow);
+
+    font-weight: 500;
+
+    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+
+.row:hover {
+    transform: translateY(-4px);
+}
+
+.cell {
+    color: var(--text-color);
+
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
