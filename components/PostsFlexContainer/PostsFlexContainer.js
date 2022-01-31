@@ -8,7 +8,7 @@ const PostsFlexContainer = ({posts}) => {
             <div className={classes.postsBox}>
                 {posts.map((post) => (
                     <div className={classes.post} key={post.id}>
-                        <Link href={`/post/[id]`} as={`/post/${post.id}`}>
+                        <Link href={`/posts/[id]`} as={`/posts/${post.id}`}>
                             <a className={classes.a}>
                                 {post.title}
                             </a>

@@ -2,7 +2,7 @@ import Head from "next/head";
 import classes from "../styles/mainLayout.module.css"
 import Navigation from "./Navigation";
 
-export function MainLayout({children, title = `Next App`}) {
+function MainLayout({children, title = `Next App`}) {
     return (
         <>
             <Head>
@@ -17,3 +17,5 @@ export function MainLayout({children, title = `Next App`}) {
         </>
     )
 }
+
+export {MainLayout}

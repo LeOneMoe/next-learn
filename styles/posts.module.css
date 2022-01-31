@@ -31,3 +31,14 @@
     margin: 12px 0;
     color: var(--text-color-secondary);
 }
+
+.spiiiiiin {
+    animation: spin 4s linear infinite;
+    width: 5rem;
+}
+
+@keyframes spin {
+    100% {
+        transform:rotate(360deg);
+    }
+}
