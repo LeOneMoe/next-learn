@@ -14,7 +14,7 @@ const PostsTable = ({posts}) => {
             </TableHead>
             <TableBody>
                 {posts.map(post =>
-                    <TableRow key={post.id}>
+                    <TableRow key={post.id} id={post.id}>
                         <TableCell>{post.author}</TableCell>
                         <TableCell>{post.content}</TableCell>
                     </TableRow>

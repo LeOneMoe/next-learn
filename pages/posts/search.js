@@ -3,21 +3,27 @@ import * as Yup from "yup";
 import {MainLayout} from "../../components/MainLayout";
 import {FormBody} from "../../components/FormComponents/FormBody"
 import {TextField} from "../../components/FormComponents/TextField";
+import {useRouter} from "next/router";
 
 const formValidation = Yup.object().shape({
-    title: Yup.string().trim().max(10, `Too Long`).min(3, "Too Short").required(`Title is required`),
+    title: Yup.string().trim().max(30, `Too Long`).min(3, "Too Short").required(`Title is required`),
     // author: Yup.string().trim()
 })
 
 const SearchPosts = () => {
+    const router = useRouter()
+
     const formik = useFormik({
         initialValues: {
-            title: `123`,
-            author: ``,
+            title: ``,
+            // author: ``,
         },
         validationSchema: formValidation,
         onSubmit: () => {
-            console.log(formik.values)
+            router.push({
+                pathname: `/posts`,
+                query: formik.values
+            })
         }
     })
 
@@ -77,14 +83,14 @@ const SearchPosts = () => {
                     onBlur={formik.handleBlur}
                     error={formik.errors.title}
                 />
-                <TextField
-                    label={`Author`}
-                    name={`author`}
-                    value={formik.values.author}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.errors.author}
-                />
+                {/*<TextField*/}
+                {/*    label={`Author`}*/}
+                {/*    name={`author`}*/}
+                {/*    value={formik.values.author}*/}
+                {/*    onChange={formik.handleChange}*/}
+                {/*    onBlur={formik.handleBlur}*/}
+                {/*    error={formik.errors.author}*/}
+                {/*/>*/}
             </FormBody>
 
         </MainLayout>

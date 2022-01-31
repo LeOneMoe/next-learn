@@ -1,9 +1,8 @@
 import {MainLayout} from "../../components/MainLayout";
 import classes from "../../styles/posts.module.css"
-import PostsFlexContainer from "../../components/PostsFlexContainer/PostsFlexContainer"
 import PostsTable from "../../components/PostsTable/PostsTable";
-import {getAll} from "../../api/posts/crud";
 import {useEffect, useState} from "react";
+import {find} from "../../api/posts/find";
 
 
 const Posts = ({SSPosts}) => {
@@ -41,8 +40,8 @@ const Posts = ({SSPosts}) => {
     )
 }
 
-export const getServerSideProps = async () => {
-    const SSPosts = await getAll()
+export const getServerSideProps = async ({query}) => {
+    const SSPosts = await find(query)
 
     return {props: {SSPosts}}
 }
