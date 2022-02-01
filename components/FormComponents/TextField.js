@@ -1,6 +1,6 @@
 import classes from "./Form.module.css"
 
-const TextField = ({label, name, value, onChange, onBlur, error}) => {
+const TextField = ({label, name, placeholder, value, onChange, onBlur, error}) => {
     return (
         <div className={classes.textField}>
             <div className={classes.label}>{label}</div>
@@ -10,7 +10,7 @@ const TextField = ({label, name, value, onChange, onBlur, error}) => {
                     className={classes.input}
                     type="text"
                     name={name}
-                    placeholder={label}
+                    placeholder={placeholder}
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
@@ -18,7 +18,7 @@ const TextField = ({label, name, value, onChange, onBlur, error}) => {
             </div>
 
             {error && (
-                <div>
+                <div className={classes.error}>
                     {error}
                 </div>
             )}

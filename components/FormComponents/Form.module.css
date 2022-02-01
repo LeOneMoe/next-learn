@@ -1,12 +1,17 @@
 .textField {
     display: flex;
-    /*align-items: flex-start;*/
+    gap: 1rem;
+    align-items: center;
+}
+
+.comboBoxField {
+    display: flex;
     gap: 1rem;
     align-items: center;
 }
 
 .label {
-    width: 7rem;
+    width: 15rem;
     word-break: break-word;
     align-items: center;
 }
@@ -41,4 +46,8 @@
 
 .input::placeholder {
     color: var(--text-color-secondary);
+}
+
+.error {
+    color: red;
 }
