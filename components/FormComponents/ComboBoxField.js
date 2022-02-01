@@ -1,20 +1,24 @@
 import classes from "./Form.module.css"
 
-const TextField = ({label, name, placeholder, value, onChange, onBlur, error}) => {
+const ComboBoxField = ({label, name, placeholder, value, onChange, onBlur, error, options}) => {
     return (
-        <div className={classes.textField}>
+        <div className={classes.comboBoxField}>
             <div className={classes.label}>{label}</div>
 
             <div className={classes.wrapper}>
-                <input
+                <select
                     className={classes.input}
-                    type="text"
                     name={name}
-                    placeholder={placeholder}
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
-                />
+                    style={{display: 'block'}}
+                >
+                    <option value="" label={placeholder}/>
+                    {options.map(option =>
+                        <option key={option.key} value={option.key} label={option.value}/>
+                    )}
+                </select>
             </div>
 
             {error && (
@@ -26,4 +30,4 @@ const TextField = ({label, name, placeholder, value, onChange, onBlur, error}) =
     )
 }
 
-export {TextField}
+export {ComboBoxField}

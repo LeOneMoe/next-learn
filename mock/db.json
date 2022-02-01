@@ -1,4 +1,26 @@
 {
+  "options": [
+    {
+      "key": "1",
+      "value": "Red"
+    },
+    {
+      "key": "2",
+      "value": "Yellow"
+    },
+    {
+      "key": "3",
+      "value": "Green"
+    },
+    {
+      "key": "4",
+      "value": "Blue"
+    },
+    {
+      "key": "5",
+      "value": "Black"
+    }
+  ],
   "posts": [
     {
       "id": 1,
