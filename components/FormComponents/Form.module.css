@@ -24,13 +24,33 @@
 }
 
 .input {
+    font-family: inherit;
     border: none;
     background-color: transparent;
     padding: 16px;
     width: 100%;
     height: 100%;
     outline: none;
-    color: var(--text-color-secondary);
+    color: var(--text-color);
+}
+
+.select {
+    display: block;
+    border: none;
+    background-color: transparent;
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    color: var(--text-color);
+}
+
+.select .selected {
+    color: var(--text-color);
+}
+
+.placeholderOption {
+    color: var(--text-color-secondary)
 }
 
 .wrapper {
