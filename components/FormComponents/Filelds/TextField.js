@@ -1,4 +1,4 @@
-import classes from "./Form.module.css"
+import classes from "../Form.module.css"
 
 const TextField = ({label, name, placeholder, value, onChange, onBlur, error}) => {
     return (
