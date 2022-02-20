@@ -2,7 +2,6 @@ import classes from "../Form.module.css"
 import {Autocomplete, IconButton, Input, TextField} from "@mui/material";
 import * as React from "react";
 import ClearIcon from '@mui/icons-material/Clear';
-import {useEffect} from "react";
 
 
 const ComboBoxInput = ({...params}) => {
