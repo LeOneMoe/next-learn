@@ -11,11 +11,11 @@ import {DateField} from "../../components/FormComponents/Filelds/DateField";
 import {MoneyField} from "../../components/FormComponents/Filelds/MoneyField";
 
 const formValidation = Yup.object().shape({
-    title: Yup.string().trim().max(30, `Too Long`).min(3, "Too Short").required(`Title is required`),
-    number: Yup.number().required("Number is required"),
-    date: Yup.string().required("Date is required").nullable(),
-    color: Yup.string().required("Color is required"),
-    money: Yup.number().min(0, "Cannot be negative").required("Money is required"),
+    title: Yup.string().trim().max(30, `Too Long`).min(3, `Too Short`).required(`Title is required`),
+    number: Yup.number().required(`Number is required`),
+    date: Yup.string().required(`Date is required`).nullable(),
+    color: Yup.string().required(`Color is required`),
+    money: Yup.number().min(0, `Cannot be negative`).required(`Money is required`),
 })
 
 const SearchPosts = () => {
@@ -32,16 +32,13 @@ const SearchPosts = () => {
         }
     })
 
-
-    console.log(options)
     const formik = useFormik({
         initialValues: {
             title: ``,
             money: ``,
             date: ``,
             number: ``,
-            color: `1`,
-            // author: ``,
+            color: ``,
         },
         validationSchema: formValidation,
         onSubmit: () => {
@@ -52,15 +49,7 @@ const SearchPosts = () => {
             // })
         }
     })
-
-    const optionss = [
-        {key: 1, label: `g`},
-        {key: 2, label: `e`},
-        {key: 3, label: `b`},
-        {key: 4, label: `s`},
-        {key: 5, label: `a`},
-    ]
-
+    
     return (
         <MainLayout title={`Search Posts`}>
             <FormBody

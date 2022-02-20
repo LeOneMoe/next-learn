@@ -1,41 +1,7 @@
 import classes from "../Form.module.css"
-import {Autocomplete, IconButton, Input, TextField} from "@mui/material";
+import {Autocomplete, TextField} from "@mui/material";
 import * as React from "react";
-import ClearIcon from '@mui/icons-material/Clear';
-
-
-const ComboBoxInput = ({...params}) => {
-    const {InputProps, InputLabelProps, ...rest} = params
-
-    return (
-        <Input
-            className={classes.input}
-            disableUnderline
-            {...rest}
-        />
-    )
-}
-
-const DropDownButton = ({onClick, icon}) => {
-    return (
-        <IconButton
-            onClick={onClick}
-        >
-            {icon}
-        </IconButton>
-    )
-}
-
-const ClearButton = ({onClick}) => {
-    return (
-        <IconButton
-            onClick={onClick}
-        >
-            <ClearIcon fontSize={"small"}/>
-        </IconButton>
-    )
-}
-
+import {useEffect, useState} from "react";
 
 const ComboBoxField = ({
                            label,
@@ -49,6 +15,18 @@ const ComboBoxField = ({
                            width = 300
                        }) => {
 
+    const [initOption, setInitOption] = useState({key: ``, label: ``})
+
+    useEffect(() => {
+        const getInitOption = () => {
+            const result = options.find(option => option.key === value)
+            setInitOption(result ? result : {key: ``, label: ``})
+        }
+
+        if (options) {
+            getInitOption()
+        }
+    }, [options, value])
 
     return (
         <div className={classes.comboBoxField}>
@@ -59,36 +37,45 @@ const ComboBoxField = ({
                 className={classes.fieldWrapper}
             >
                 <Autocomplete
-                    name={name}
+                    value={initOption}
+
                     options={options}
                     getOptionLabel={option => option.label}
+
+                    name={name}
+                    isOptionEqualToValue={(option, value) => option.key === value.key}
+
                     onChange={(_, newValue) => {
                         handleChange(name, newValue ? newValue.key : ``)
                     }}
                     onBlur={handleBlur}
+
+                    sx={{width: width}}
+
                     disablePortal
                     autoComplete
                     autoHighlight
-                    sx={{width: width}}
 
                     renderInput={(params) =>
                         <TextField
                             {...params}
                             placeholder={placeholder}
-                            // value={initial.label}
+                            className={classes.comboBoxInput}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    color: "inherit",
+                                    fontFamily: "inherit",
+                                    "& fieldset": {
+                                        border: "inherit",
+                                    },
+                                    "&.Mui-focused fieldset": {
+                                        border: "inherit",
+                                    },
+                                }
+                            }}
                         />
-                        // <ComboBoxInput
-                        //     {...params}
-                        //     label={placeholder}
-                        // />
                     }
                 />
-
-                {/*<ClearButton/>*/}
-                {/*<DropDownButton*/}
-                {/*    onClick={() => setOpen(isOpen => !isOpen)}*/}
-                {/*    icon={open ? <ArrowDropDownIcon/> : <ArrowDropUpIcon/>}*/}
-                {/*/>*/}
             </div>
 
             {error && (
