@@ -27,13 +27,13 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, r
     );
 });
 
-function MoneyField({label, name, placeholder, value, onChange, onBlur, error}) {
+function MoneyField({label, name, placeholder, value, handleChange, handleBlur, error, width = 300}) {
     return (
 
-        <div className={classes.textField}>
+        <div className={classes.field}>
             <div className={classes.label}>{label}</div>
 
-            <div className={classes.wrapper}>
+            <div className={classes.fieldWrapper} style={{width: width + `px`}}>
                 <Input
                     className={classes.input}
                     disableUnderline={true}
@@ -41,10 +41,9 @@ function MoneyField({label, name, placeholder, value, onChange, onBlur, error}) 
                     placeholder={placeholder}
                     name={name}
                     value={value}
-                    onChange={onChange}
-                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     inputComponent={NumberFormatCustom}
-
                 />
             </div>
 

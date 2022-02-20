@@ -2,23 +2,23 @@
   "options": [
     {
       "key": "1",
-      "value": "Red"
+      "label": "Red"
     },
     {
       "key": "2",
-      "value": "Yellow"
+      "label": "Yellow"
     },
     {
       "key": "3",
-      "value": "Green"
+      "label": "Green"
     },
     {
       "key": "4",
-      "value": "Blue"
+      "label": "Blue"
     },
     {
       "key": "5",
-      "value": "Black"
+      "label": "Black"
     }
   ],
   "posts": [

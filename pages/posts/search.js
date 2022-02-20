@@ -13,6 +13,7 @@ import {MoneyField} from "../../components/FormComponents/Filelds/MoneyField";
 const formValidation = Yup.object().shape({
     title: Yup.string().trim().max(30, `Too Long`).min(3, "Too Short").required(`Title is required`),
     number: Yup.number().required("Number is required"),
+    date: Yup.string().required("Date is required").nullable(),
     color: Yup.string().required("Color is required"),
     money: Yup.number().min(0, "Cannot be negative").required("Money is required"),
 })
@@ -31,13 +32,15 @@ const SearchPosts = () => {
         }
     })
 
+
+    console.log(options)
     const formik = useFormik({
         initialValues: {
             title: ``,
             money: ``,
             date: ``,
             number: ``,
-            color: ``,
+            color: `1`,
             // author: ``,
         },
         validationSchema: formValidation,
@@ -50,6 +53,14 @@ const SearchPosts = () => {
         }
     })
 
+    const optionss = [
+        {key: 1, label: `g`},
+        {key: 2, label: `e`},
+        {key: 3, label: `b`},
+        {key: 4, label: `s`},
+        {key: 5, label: `a`},
+    ]
+
     return (
         <MainLayout title={`Search Posts`}>
             <FormBody
@@ -61,8 +72,8 @@ const SearchPosts = () => {
                     name={`title`}
                     placeholder={'Input Some Text'}
                     value={formik.values.title}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
+                    handleChange={formik.handleChange}
+                    handleBlur={formik.handleBlur}
                     error={formik.errors.title}
                 />
 
@@ -71,8 +82,8 @@ const SearchPosts = () => {
                     name={`number`}
                     placeholder={'Input Some Number'}
                     value={formik.values.number}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
+                    handleChange={formik.handleChange}
+                    handleBlur={formik.handleBlur}
                     error={formik.errors.number}
                 />
 
@@ -81,8 +92,8 @@ const SearchPosts = () => {
                     name={`date`}
                     inputFormat={`dd/MM/yyyy`}
                     value={formik.values.date}
-                    onChange={formik.setFieldValue}
-                    onBlur={formik.handleBlur}
+                    handleChange={formik.setFieldValue}
+                    handleBlur={formik.handleBlur}
                     error={formik.errors.date}
                 />
 
@@ -92,8 +103,8 @@ const SearchPosts = () => {
                     placeholder={`Choose Color`}
                     value={formik.values.color}
                     options={options}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
+                    handleChange={formik.setFieldValue}
+                    handleBlur={formik.handleBlur}
                     error={formik.errors.color}
                 />
 
@@ -103,8 +114,8 @@ const SearchPosts = () => {
                     placeholder={'₽ 0.00'}
                     prefix={`₽`}
                     value={formik.values.money}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
+                    handleChange={formik.handleChange}
+                    handleBlur={formik.handleBlur}
                     error={formik.errors.money}
                 />
 

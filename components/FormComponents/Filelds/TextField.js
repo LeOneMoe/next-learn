@@ -1,19 +1,19 @@
 import classes from "../Form.module.css"
 
-const TextField = ({label, name, placeholder, value, onChange, onBlur, error}) => {
+const TextField = ({label, name, placeholder, value, handleChange, handleBlur, error, width = 300}) => {
     return (
-        <div className={classes.textField}>
+        <div className={classes.field}>
             <div className={classes.label}>{label}</div>
 
-            <div className={classes.wrapper}>
+            <div className={classes.fieldWrapper} style={{width: width + `px`}}>
                 <input
                     className={classes.input}
                     type="text"
                     name={name}
                     placeholder={placeholder}
                     value={value}
-                    onChange={onChange}
-                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                 />
             </div>
 
